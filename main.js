@@ -9,6 +9,7 @@ const botoes = document.querySelectorAll('.parametro-senha__botao');
 const campoSenha = document.querySelector('#campo-senha');
 const checkbox = document.querySelectorAll('.checkbox');
 botoes[0].onclick = diminuiTamanho;
+const forcaSenha = document.querySelector(‘.forca’);
 botoes[1].onclick = aumentaTamanho;
 function diminuiTamanho(){
 if (tamanhoSenha > 1){
@@ -51,5 +52,16 @@ numeroAleatorio = Math.floor(numeroAleatorio);
 senha = senha + alfabeto[numeroAleatorio];
 }
 campoSenha.value = senha;
+  classificaSenha();
 classificaSenha();
+}
+function classificaSenha(){
+forcaSenha.classList.remove('fraca', 'media', 'forte');
+if (tamanhoSenha > 11){
+forcaSenha.classList.add('forte');
+} else if (tamanhoSenha > 5 && tamanhoSenha < 12) {
+forcaSenha.classList.add('media');
+} else if (tamanhoSenha < 5) {
+forcaSenha.classList.add('fraca');
+}
 }
